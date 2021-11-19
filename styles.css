@@ -1,0 +1,19 @@
+body {
+    background-color: black;
+    color: papayawhip;
+    padding: 2px;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    border: 2px solid darkorchid;
+}
+
+td {
+    border: 1px solid papayawhip;
+    padding-left: 5px;
+        
+}
