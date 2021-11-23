@@ -2,40 +2,50 @@
 
 <html>
     <head>
-        <meta>
         <title>Raid Tracker</title>
-
         <link rel="stylesheet" href="styles.css">
-        <script>
+        
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
+        <script id="raid-template" type="text/javascript">
+            
         </script>
+
     </head>
 
     <body>
         <div id="main-wrapper">
-            <table>
-                <thead>
-                    <!-- These Table headers need to be changeable and populated from the accociated array coming back-->
-                    <tr>
-                        <th>ONE</th>
-                        <th>TWO</th>
-                        <th>THREE</th>
-                        <th>FOUR</th>
-                        <th>FIVE</th>
-                        <th>SIX</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>A</td>
-                        <td>B</td>
-                        <td>K</td>
-                        <td>D</td>
-                        <td>D</td>
-                        <td>T</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div id="table-wrapper">
+                <div id="title">Raid Tracker</div>
+                <table>
+                    <thead>
+                        <!-- These Table headers need to be changeable and populated from the accociated array coming back-->
+                        <tr>
+                            <th>ONE</th>
+                            <th>TWO</th>
+                            <th>THREE</th>
+                            <th>FOUR</th>
+                            <th>FIVE</th>
+                            <th>SIX</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A</td>
+                            <td>B</td>
+                            <td>K</td>
+                            <td>D</td>
+                            <td>D</td>
+                            <td>T</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+
+        <script src="app.js" type="text/javascript"></script>
     </body>
 </html>
