@@ -18,12 +18,22 @@ td {
 }
 
 #main-wrapper {
-    max-width: 1278px;
+    /* max-width: 1278px; */
     margin: 0 auto;
-    padding-top: 12px;
+    /* padding-top: 12px; */
 }
 
-#table-wrapper > div {
+/* #table-wrapper > div {
+    font-weight: bold;
+    font-size: 5vw;
+    display: flex;
+    justify-content: center;
+    text-shadow: 0 0 5px darkorchid, 0 0 5px darkorchid;
+    background-repeat: no-repeat, repeat;
+    background-blend-mode: lighten;
+} */
+
+.title-div {
     font-weight: bold;
     font-size: 5vw;
     display: flex;

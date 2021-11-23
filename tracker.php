@@ -3,15 +3,38 @@
 <html>
     <head>
         <title>Raid Tracker</title>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="styles.css">
         
         
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
-        <script id="raid-template" type="text/javascript">
-            
+        <script id="raid-template" type="text/x-handlebars-template">
+            <table>
+                <thead>
+                    <tr>
+                        {{#each headers}}
+                            <th>{{this}}</th>
+                        {{/each}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each raids}}
+                        <tr>
+                            <td>{{ID}}</td>
+                            <td>{{Name}}</td>
+                            <td>{{Guild}}</td>
+                            <td>{{'Completed On'}}</td>
+                            <td>{{Wipes}}</td>
+                            <td>{{'Clear Time'}}</td>
+                        </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </script>
+
+        <script id="item-template">
+
         </script>
 
         <script type="text/javascript">
@@ -22,9 +45,17 @@
                     async: false,
                     success: function(returnedData){
                         let data = JSON.parse(returnedData);
+                        console.log(returnedData);
 
-                        if(data.err == null) {
-                            console.log(data);
+                        if(data.error == null) {
+                            let templateScript = $("#raid-template").html();
+                            let template = Handlebars.compile(templateScript);
+                            // let compiledHtml = template({"data": data});
+                            let compiledHtml = template(data);
+                            $("#table-wrapper").html(compiledHtml);
+                        }
+                        else {
+                            $("#test-div").html("<center><h1 style='color:red'>" + data.error + "</h1></center>")
                         }
                     }
                 });
@@ -34,38 +65,26 @@
                 loadRaids();
             });
 
+            Handlebars.registerHelper('each', function(context, options) {
+                var ret = "";
+
+                for(var i=0, j=context.length; i<j; i++) {
+                    ret = ret + options.fn(context[i]);
+                }
+
+                return ret;
+            });
+
         </script>
 
     </head>
 
     <body>
         <div id="main-wrapper">
-            <div id="table-wrapper">
-                <div id="title">Raid Tracker</div>
-                <table>
-                    <thead>
-                        <!-- These Table headers need to be changeable and populated from the accociated array coming back-->
-                        <tr>
-                            <th>ONE</th>
-                            <th>TWO</th>
-                            <th>THREE</th>
-                            <th>FOUR</th>
-                            <th>FIVE</th>
-                            <th>SIX</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>A</td>
-                            <td>B</td>
-                            <td>K</td>
-                            <td>D</td>
-                            <td>D</td>
-                            <td>T</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+            <div class="title-div">Raid Tracker</div>
+            <div id="table-wrapper"></div>
+        
         </div>
 
         <script src="app.js" type="text/javascript"></script>
