@@ -6,8 +6,9 @@
     $stmt = $db->prepare($query);
 
     if($stmt->execute()) {
+        $returnArray = array();
         while($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $returnArray = array(
+            $returnArray[] = array(
                 "id" => $result["ID"],
                 "name" => $result['Name'],
                 "guild" => $result['Guild'],
@@ -17,9 +18,9 @@
             );
         }
         print_r($returnArray);
-        return json_encode($returnArray);
+        // return json_encode($returnArray);
 
     }
     else {
-        return json_encode("error" => "Unable to lock this query into execution. Try again pl0x");
+        return json_encode(array("error" => "Unable to lock this query into execution. Try again pl0x"));
     }

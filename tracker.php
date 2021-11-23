@@ -14,6 +14,28 @@
             
         </script>
 
+        <script type="text/javascript">
+            function loadRaids() {
+                $.ajax({
+                    url: 'processTracker.php',
+                    method: 'POST',
+                    async: false,
+                    success: function(returnedData){
+                        let data = JSON.parse(returnedData);
+
+                        if(data.err == null) {
+                            console.log(data);
+                        }
+                    }
+                });
+            }
+
+            $(function() {
+                loadRaids();
+            });
+
+        </script>
+
     </head>
 
     <body>
